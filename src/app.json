@@ -5,7 +5,10 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "童乐读书会",
+    "navigationBarTitleText": "童乐读书官网",
     "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-button": "/vant-weapp/dist/button/index"
   }
 }
