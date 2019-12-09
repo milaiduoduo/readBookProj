@@ -1,11 +1,21 @@
 <template>
-  <div class="wrap"></div>
+  <div class="wrap">
+    <search-bar></search-bar>
+  </div>
 </template>
 
 <script>
-import { get, post } from "@/utils/request.js";
-export default {};
+import searchBar from "@/components/home/searchBar.vue";
+
+export default {
+  components: {
+    searchBar
+  }
+};
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
+.wrap {
+  height: 100px;
+}
 </style>
