@@ -7,15 +7,23 @@
       @onChange="changeHandle"
       @onConfirm="confirmHandle"
     ></search-bar>
+    <imageView
+      src="https://www.youbaobao.xyz/mpvue-res/big1.jpg"
+      height="100px"
+      mode="scaleToFill"
+      :round="true"
+    ></imageView>
   </div>
 </template>
 
 <script>
 import searchBar from "@/components/home/searchBar.vue";
+import imageView from "@/components/base/imageView.vue";
 
 export default {
   components: {
-    searchBar
+    searchBar,
+    imageView
   },
   methods: {
     clickHandle() {
@@ -35,7 +43,4 @@ export default {
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
-.wrap {
-  height: 100px;
-}
 </style>
