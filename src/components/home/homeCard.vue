@@ -36,11 +36,15 @@
       </div>
     </div>
     <div class="feedbackWrap" @click="onFeedBackClick">反馈</div>
+    <van-dialog id="van-dialog" />
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+//引用vant-weapp的dialog组件,路径针对的是dist文件夹
+import Dialog from "vant-weapp/dist/dialog/dialog";
 import imageView from "@/components/base/imageView.vue";
+
 export default {
   props: {
     data: Object,
@@ -60,7 +64,21 @@ export default {
     gotoShelf() {},
     onBookClick() {},
     sign() {},
-    onFeedBackClick() {}
+    onFeedBackClick() {
+      Dialog.confirm({
+        title: "反馈",
+        message: "您是否确认提交反馈信息？",
+        cancelButtonText: "否",
+        confirmButtonText: "是"
+      })
+        .then(() => {
+          // on close
+          console.log("点击是之后的事件");
+        })
+        .catch(() => {
+          console.log("点击否之后的事件");
+        });
+    }
   }
 };
 </script>
