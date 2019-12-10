@@ -7,23 +7,26 @@
       @onChange="changeHandle"
       @onConfirm="confirmHandle"
     ></search-bar>
-    <imageView
-      src="https://www.youbaobao.xyz/mpvue-res/big1.jpg"
+    <!-- <imageView
+      src="https://www.youbaobao.xyz/mpvue-res/big.jpg"
       height="100px"
       mode="scaleToFill"
       :round="true"
-    ></imageView>
+    ></imageView>-->
+    <homeCard></homeCard>
   </div>
 </template>
 
 <script>
 import searchBar from "@/components/home/searchBar.vue";
-import imageView from "@/components/base/imageView.vue";
+// import imageView from "@/components/base/imageView.vue";
+import homeCard from "@/components/home/homeCard.vue";
 
 export default {
   components: {
     searchBar,
-    imageView
+    // imageView,
+    homeCard
   },
   methods: {
     clickHandle() {
