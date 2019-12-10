@@ -11,16 +11,22 @@
         <div class="shelfText">特别精选</div>
       </div>
       <div class="bookInfo">
-        <div class="bookWrap">
-          <imageView
-            src="https://www.youbaobao.xyz/book/res/img//EarthSciences/978-981-10-3713-9_CoverFigure.jpg"
-          ></imageView>
-          <imageView
-            src="https://www.youbaobao.xyz/book/res/img//EarthSciences/978-981-10-3713-9_CoverFigure.jpg"
-          ></imageView>
-          <imageView
-            src="https://www.youbaobao.xyz/book/res/img//EarthSciences/978-981-10-3713-9_CoverFigure.jpg"
-          ></imageView>
+        <div class="booksWrap">
+          <div class="bookWrapper">
+            <imageView
+              src="https://www.youbaobao.xyz/book/res/img//EarthSciences/978-981-10-3713-9_CoverFigure.jpg"
+            ></imageView>
+          </div>
+          <div class="bookWrapper">
+            <imageView
+              src="https://www.youbaobao.xyz/book/res/img//EarthSciences/978-981-10-3713-9_CoverFigure.jpg"
+            ></imageView>
+          </div>
+          <div class="bookWrapper">
+            <imageView
+              src="https://www.youbaobao.xyz/book/res/img//EarthSciences/978-981-10-3713-9_CoverFigure.jpg"
+            ></imageView>
+          </div>
         </div>
         <div class="arrowWrap">
           <!-- 竖排文字 -->
@@ -96,9 +102,13 @@ export default {
     }
     .bookInfo {
       display: flex;
-      .bookWrap {
+      .booksWrap {
         flex: 1;
         display: flex;
+        .bookWrapper {
+          width: 72px;
+          height: 101px;
+        }
       }
       .arrowWrap {
         display: flex;
