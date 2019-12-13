@@ -8,7 +8,7 @@
         <div class="title">登录小慕读书</div>
         <div class="subTitle">全场好书免费读</div>
       </div>
-      <button class="btn">授权登录</button>
+      <button class="btnAuth" open-type="getUserInfo" @getuserinfo="getUserInfo">授权登录</button>
     </div>
   </div>
 </template>
@@ -21,6 +21,11 @@ export default {
   },
   components: {
     imageView
+  },
+  methods: {
+    getUserInfo() {
+      this.$emit("getUserInfo");
+    }
   }
 };
 </script>
@@ -64,7 +69,7 @@ export default {
         margin-top: 3.5px;
       }
     }
-    .btn {
+    .btnAuth {
       position: absolute;
       width: 100%;
       height: 49px;

@@ -10,7 +10,7 @@
       ></search-bar>
       <homeCard></homeCard>
     </div>
-    <auth v-else src="https://www.youbaobao.xyz/mpvue-res/logo.jpg"></auth>
+    <auth v-else src="https://www.youbaobao.xyz/mpvue-res/logo.jpg" @getUserInfo="getUserInfo"></auth>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ import searchBar from "@/components/home/searchBar.vue";
 import homeCard from "@/components/home/homeCard.vue";
 import auth from "@/components/base/auth.vue";
 
-import { getSetting } from "@/api/wechat.js";
+import { w_getSetting, w_getuserInfo } from "@/api/wechat.js";
 
 export default {
   components: {
@@ -31,6 +31,7 @@ export default {
   },
   data() {
     return {
+      // 是否已经授权给小程序
       authed: false
     };
   },
@@ -47,19 +48,38 @@ export default {
     confirmHandle(e) {
       console.log("父组件收到confirm", e);
     },
-    getSetting() {
-      getSetting(
-        "userInfo",
-        () => {
-          console.log("获取到设置！！");
+    getUserInfo() {
+      console.log("正在获取用户信息:");
+      // this.getSetting();
+      w_getuserInfo(
+        userInfo => {
+          console.log("成功获取用户信息", userInfo);
         },
         () => {
-          console.log("获取设置失败！！");
+          console.log("获取用户信息失败！授权失败!"); //抛出异常
+        }
+      );
+    },
+    getSetting() {
+      w_getSetting(
+        "userInfo",
+        res => {
+          this.authed = true;
+          console.log("获取到设置！！", res);
+          this.getUserInfo();
+        },
+        res => {
+          this.authed = false;
+          console.log("获取设置失败！！", res);
         }
       );
     }
+    // init() {
+    //   this.getSetting();
+    // }
   },
   mounted() {
+    // this.init();
     this.getSetting();
   }
 };
