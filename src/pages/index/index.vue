@@ -21,6 +21,7 @@
 import searchBar from "@/components/home/searchBar.vue";
 // import imageView from "@/components/base/imageView.vue";
 import homeCard from "@/components/home/homeCard.vue";
+import { getSetting } from "@/api/wechat.js";
 
 export default {
   components: {
@@ -41,25 +42,16 @@ export default {
     confirmHandle(e) {
       console.log("父组件收到confirm", e);
     },
-    getSetting(onSuccess, onFail) {
-      mpvue.getSetting({
-        success(res) {
-          console.log("getSetting success!!", res);
-          if (res.authSetting["scope.userInfo"]) {
-            // onSuccess(res);
-            console.log(
-              "getSetting success!!",
-              res.authSetting["scope.userInfo"]
-            );
-          } else {
-            // onFail(res);
-            console.log("s1.getSetting fail!!", res);
-          }
+    getSetting() {
+      getSetting(
+        "userInfo",
+        () => {
+          console.log("获取设置，成功！！");
         },
-        fail(res) {
-          console.log("1.getSetting fail!!", res);
+        () => {
+          console.log("获取设置，失败！！");
         }
-      });
+      );
     }
   },
   mounted() {
