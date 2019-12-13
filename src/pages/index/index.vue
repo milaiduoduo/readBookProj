@@ -46,10 +46,10 @@ export default {
       getSetting(
         "userInfo",
         () => {
-          console.log("获取设置，成功！！");
+          console.log("获取到设置！！");
         },
         () => {
-          console.log("获取设置，失败！！");
+          console.log("获取设置失败！！");
         }
       );
     }
