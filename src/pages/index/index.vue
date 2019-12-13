@@ -40,7 +40,30 @@ export default {
     },
     confirmHandle(e) {
       console.log("父组件收到confirm", e);
+    },
+    getSetting(onSuccess, onFail) {
+      mpvue.getSetting({
+        success(res) {
+          console.log("getSetting success!!", res);
+          if (res.authSetting["scope.userInfo"]) {
+            // onSuccess(res);
+            console.log(
+              "getSetting success!!",
+              res.authSetting["scope.userInfo"]
+            );
+          } else {
+            // onFail(res);
+            console.log("s1.getSetting fail!!", res);
+          }
+        },
+        fail(res) {
+          console.log("1.getSetting fail!!", res);
+        }
+      });
     }
+  },
+  mounted() {
+    this.getSetting();
   }
 };
 </script>
