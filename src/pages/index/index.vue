@@ -1,33 +1,38 @@
 <template>
   <div class="wrap">
-    <search-bar
-      :disabled="false"
-      @onClick="clickHandle"
-      @onClear="clearHandle"
-      @onChange="changeHandle"
-      @onConfirm="confirmHandle"
-    ></search-bar>
-    <!-- <imageView
-      src="https://www.youbaobao.xyz/mpvue-res/big.jpg"
-      height="100px"
-      mode="scaleToFill"
-      :round="true"
-    ></imageView>-->
-    <homeCard></homeCard>
+    <div v-if="authed">
+      <search-bar
+        :disabled="false"
+        @onClick="clickHandle"
+        @onClear="clearHandle"
+        @onChange="changeHandle"
+        @onConfirm="confirmHandle"
+      ></search-bar>
+      <homeCard></homeCard>
+    </div>
+    <auth v-else src="https://www.youbaobao.xyz/mpvue-res/logo.jpg"></auth>
   </div>
 </template>
 
 <script>
 import searchBar from "@/components/home/searchBar.vue";
-// import imageView from "@/components/base/imageView.vue";
+
 import homeCard from "@/components/home/homeCard.vue";
+import auth from "@/components/base/auth.vue";
+
 import { getSetting } from "@/api/wechat.js";
 
 export default {
   components: {
     searchBar,
     // imageView,
-    homeCard
+    homeCard,
+    auth
+  },
+  data() {
+    return {
+      authed: false
+    };
   },
   methods: {
     clickHandle() {
